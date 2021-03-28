@@ -9,6 +9,10 @@ app.use(bodyParser.json());
 app.use(cors());
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@test.0kqsr.mongodb.net/emaJohnCommerce?retryWrites=true&w=majority`;
 
+app.get('/', (req, res) => {
+  res.send('server is working efficiently and you can check now')
+})
+
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   const productsCollection = client.db("emaJohnCommerce").collection("products");
